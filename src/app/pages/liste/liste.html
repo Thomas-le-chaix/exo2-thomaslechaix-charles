@@ -1,0 +1,26 @@
+<div class="container text-center py-4">
+  <h2 class="mb-4">Ma Sélection de Films</h2>
+
+  <!-- Liste des liens centrée en haut -->
+  <div class="d-flex justify-content-center gap-3 mb-5 flex-wrap">
+    @for (film of films; track film.id) {
+      <button 
+        type="button" 
+        class="btn btn-outline-dark"
+        [class.active]="filmSelectionne?.id === film.id"
+        (click)="selectionnerFilm(film)">
+        {{ film.titre }}
+      </button>
+    }
+  </div>
+
+  <!-- Affichage du film sélectionné -->
+  @if (filmSelectionne) {
+    <div class="card mx-auto shadow-sm" style="max-width: 320px;">
+      <img [src]="filmSelectionne.affiche" class="card-img-top" [alt]="filmSelectionne.titre">
+      <div class="card-body">
+        <h4 class="card-title m-0">{{ filmSelectionne.titre }}</h4>
+      </div>
+    </div>
+  }
+</div>
