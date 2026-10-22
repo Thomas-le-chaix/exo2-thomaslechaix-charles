@@ -6,7 +6,7 @@
       </div>
       <div class="card-body p-4">
         <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-          
+
           <div class="mb-3">
             <label class="form-label" for="prenom">Prénom *</label>
             <input type="text" id="prenom" formControlName="prenom" class="form-control">
@@ -19,7 +19,9 @@
 
           <div class="mb-3">
             <label class="form-label" for="age">Âge</label>
-            <input type="number" id="age" formControlName="age" class="form-control">
+            <input type="number" id="age" formControlName="age" class="form-control"
+                   min="0" max="120"
+                   (keydown)="bloquerTouches($event)">
           </div>
 
           <div class="form-check form-switch mb-3">
@@ -27,7 +29,8 @@
             <label class="form-check-label" for="hideEmail">Cacher l'email</label>
           </div>
 
-          @if (!contactForm.get('hideEmail')?.value) {
+          <!-- Le champ email n'apparaît que si la case "Hide" n'est pas cochée -->
+          @if (!contactForm.controls['hideEmail'].value) {
             <div class="mb-3">
               <label class="form-label" for="email">Email *</label>
               <input type="email" id="email" formControlName="email" class="form-control">
@@ -39,6 +42,7 @@
             <textarea id="commentaire" formControlName="commentaire" rows="4" class="form-control"></textarea>
           </div>
 
+          <!-- Cliquable seulement si le formulaire est valide -->
           <button type="submit" class="btn btn-primary w-100" [disabled]="contactForm.invalid">
             Envoyer
           </button>

@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ContactService } from '../../services/contact';
 
+// L'email doit contenir un @ (demandé dans l'énoncé)
+const EMAIL_AVEC_AROBASE = /.*@.*/;
+
 @Component({
   selector: 'app-contact',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './contact.html',
   styleUrl: './contact.css'
 })
@@ -24,26 +25,38 @@ export class Contact implements OnInit {
     this.contactForm = this.fb.group({
       prenom: ['', Validators.required],
       nom: ['', Validators.required],
-      age: [null],
+      age: [null, [Validators.min(0), Validators.max(120)]],
       hideEmail: [false],
-      email: ['', [Validators.required, Validators.pattern(/.*@.*/)]],
+      email: ['', [Validators.required, Validators.pattern(EMAIL_AVEC_AROBASE)]],
       commentaire: ['', Validators.required]
     });
 
-    this.contactForm.get('hideEmail')?.valueChanges.subscribe((cache: boolean) => {
-      const emailCtrl = this.contactForm.get('email');
+    const email = this.contactForm.controls['email'];
+
+    // Case "Hide" cochée : l'email n'est plus requis et on le vide.
+    // Décochée : on remet ses règles de validation.
+    this.contactForm.controls['hideEmail'].valueChanges.subscribe((cache: boolean) => {
       if (cache) {
-        emailCtrl?.clearValidators();
-        emailCtrl?.reset();
+        email.clearValidators();
+        email.reset();
       } else {
-        emailCtrl?.setValidators([Validators.required, Validators.pattern(/.*@.*/)]);
+        email.setValidators([Validators.required, Validators.pattern(EMAIL_AVEC_AROBASE)]);
       }
-      emailCtrl?.updateValueAndValidity();
+      // Après avoir changé les règles, il faut demander à Angular de revérifier le champ
+      email.updateValueAndValidity();
     });
+  }
+
+  // Un input type="number" accepte e, +, - ... (ex: 1e2 = 100), on les bloque
+  bloquerTouches(event: KeyboardEvent): void {
+    if (['e', 'E', '+', '-', '.', ','].includes(event.key)) {
+      event.preventDefault();
+    }
   }
 
   onSubmit(): void {
     if (this.contactForm.valid) {
+      // On garde le formulaire dans le service pour que la page Gestion puisse l'afficher
       this.contactService.enregistrerContact(this.contactForm.value);
       alert('Le formulaire est valide');
       this.router.navigate(['/accueil']);

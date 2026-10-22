@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ContactService, ContactData } from '../../services/contact';
 
 @Component({
   selector: 'app-gestion',
-  standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './gestion.html',
   styleUrl: './gestion.css'
 })
@@ -14,6 +12,7 @@ export class Gestion implements OnInit {
 
   constructor(private contactService: ContactService) {}
 
+  // À l'ouverture de la page, on récupère le dernier formulaire envoyé
   ngOnInit(): void {
     this.dernierContact = this.contactService.getDernierContact();
   }

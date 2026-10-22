@@ -9,6 +9,10 @@ export const routes: Routes = [
   { path: 'liste', component: Liste },
   { path: 'gestion', component: Gestion },
   { path: 'contact', component: Contact },
+
+  // URL vide -> accueil
   { path: '', redirectTo: 'accueil', pathMatch: 'full' },
+
+  // Toute autre URL -> accueil (à laisser en dernier, sinon elle prend le pas sur les autres routes)
   { path: '**', redirectTo: 'accueil' }
 ];
