@@ -1,12 +1,11 @@
-<div class="container text-center py-4">
-  <h2 class="mb-4">Ma Sélection de Films</h2>
+<div class="films-container">
+  <h2 class="films-title">Ma Sélection de Films</h2>
 
-  <!-- Un bouton par film, centrés en haut de la page -->
-  <div class="d-flex justify-content-center gap-3 mb-5 flex-wrap">
+  <div class="films-button-group">
     @for (film of films; track film.titre) {
       <button
         type="button"
-        class="btn btn-outline-dark"
+        class="film-btn"
         [class.active]="filmSelectionne === film"
         (click)="selectionnerFilm(film)">
         {{ film.titre }}
@@ -14,13 +13,12 @@
     }
   </div>
 
-  <!-- Le film choisi s'affiche en dessous : titre puis affiche -->
   @if (filmSelectionne) {
-    <div class="card mx-auto shadow-sm" style="max-width: 320px;">
-      <div class="card-body">
-        <h4 class="card-title m-0">{{ filmSelectionne.titre }}</h4>
+    <div class="film-card">
+      <div class="film-card-body">
+        <h4 class="film-card-title">{{ filmSelectionne.titre }}</h4>
       </div>
-      <img [src]="filmSelectionne.affiche" class="card-img-bottom" [alt]="filmSelectionne.titre">
+      <img [src]="filmSelectionne.affiche" class="film-card-img" [alt]="filmSelectionne.titre">
     </div>
   }
 </div>

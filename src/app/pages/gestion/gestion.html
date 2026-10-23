@@ -1,22 +1,22 @@
-<div class="d-flex justify-content-center align-items-center py-5">
+<div class="result-wrapper">
   @if (dernierContact) {
-    <div class="card shadow" style="max-width: 500px; width: 100%;">
-      <div class="card-header bg-success text-white">
-        <h4 class="m-0 text-center">Dernier message reçu</h4>
+    <div class="result-card">
+      <div class="result-card-header">
+        <h4 class="result-card-title">Dernier message reçu</h4>
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><strong>Prénom :</strong> {{ dernierContact.prenom }}</li>
-        <li class="list-group-item"><strong>Nom :</strong> {{ dernierContact.nom }}</li>
-        <li class="list-group-item"><strong>Âge :</strong> {{ dernierContact.age ?? 'Non renseigné' }}</li>
-        <li class="list-group-item"><strong>Email :</strong> {{ dernierContact.email ?? 'Non renseigné' }}</li>
-        <li class="list-group-item"><strong>Commentaire :</strong> {{ dernierContact.commentaire }}</li>
+      <ul class="result-list">
+        <li class="result-item"><strong>Prénom :</strong> {{ dernierContact.prenom }}</li>
+        <li class="result-item"><strong>Nom :</strong> {{ dernierContact.nom }}</li>
+        <li class="result-item"><strong>Âge :</strong> {{ dernierContact.age ?? 'Non renseigné' }}</li>
+        <li class="result-item"><strong>Email :</strong> {{ dernierContact.email ?? 'Non renseigné' }}</li>
+        <li class="result-item"><strong>Commentaire :</strong> {{ dernierContact.commentaire }}</li>
       </ul>
     </div>
   } @else {
-    <div class="text-center">
-      <h1 class="display-1 text-danger fw-bold">404</h1>
-      <h3 class="text-secondary">Not Found</h3>
-      <p class="text-muted">Aucun formulaire n'a encore été envoyé.</p>
+    <div class="empty-state">
+      <h1 class="error-code">404</h1>
+      <h3 class="error-subtitle">Not Found</h3>
+      <p class="error-text">Aucun formulaire n'a encore été envoyé.</p>
     </div>
   }
 </div>

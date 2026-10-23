@@ -12,7 +12,6 @@ export class Gestion implements OnInit {
 
   constructor(private contactService: ContactService) {}
 
-  // À l'ouverture de la page, on récupère le dernier formulaire envoyé
   ngOnInit(): void {
     this.dernierContact = this.contactService.getDernierContact();
   }

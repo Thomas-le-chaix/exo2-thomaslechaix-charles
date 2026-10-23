@@ -1,0 +1,89 @@
+.films-container {
+  width: 100%;
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.films-title {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: #212529;
+}
+
+/* Boutons de filtres / sélection */
+.films-button-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.film-btn {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  color: #212529;
+  background-color: transparent;
+  border: 1px solid #212529;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.film-btn:hover {
+  color: #ffffff;
+  background-color: #212529;
+  border-color: #212529;
+}
+
+.film-btn.active {
+  color: #ffffff;
+  background-color: #212529;
+  border-color: #212529;
+}
+
+/* Carte du film sélectionné */
+.film-card {
+  max-width: 320px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.375rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.film-card-body {
+  padding: 1rem;
+}
+
+.film-card-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #212529;
+}
+
+.film-card-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}

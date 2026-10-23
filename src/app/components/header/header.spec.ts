@@ -9,7 +9,6 @@ describe('Header', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Header],
-      // le composant utilise routerLink, il a besoin du router
       providers: [provideRouter([])],
     }).compileComponents();
 

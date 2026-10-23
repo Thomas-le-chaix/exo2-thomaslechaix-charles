@@ -20,7 +20,6 @@ export class Liste {
     { titre: 'Fight Club', affiche: 'https://image.tmdb.org/t/p/w500/bptfVGEQuv6vDTIMVCHjJ9Dz8PX.jpg' }
   ];
 
-  // Film sur lequel on a cliqué (null tant qu'on n'a rien choisi)
   filmSelectionne: Film | null = null;
 
   selectionnerFilm(film: Film): void {

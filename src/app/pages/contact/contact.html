@@ -1,53 +1,50 @@
-<div class="row justify-content-center py-4">
-  <div class="col-12 col-md-8 col-lg-6">
-    <div class="card shadow-sm">
-      <div class="card-header bg-primary text-white text-center">
-        <h3 class="card-title my-1">Contactez-nous</h3>
-      </div>
-      <div class="card-body p-4">
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+<div class="contact-wrapper">
+  <div class="contact-card">
+    <div class="contact-header">
+      <h3 class="contact-title">Contactez-nous</h3>
+    </div>
 
-          <div class="mb-3">
-            <label class="form-label" for="prenom">Prénom *</label>
-            <input type="text" id="prenom" formControlName="prenom" class="form-control">
+    <div class="contact-body">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+          <label class="form-label" for="prenom">Prénom *</label>
+          <input type="text" id="prenom" formControlName="prenom" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="nom">Nom *</label>
+          <input type="text" id="nom" formControlName="nom" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="age">Âge</label>
+          <input type="number" id="age" formControlName="age" class="form-input"
+                 min="0" max="120"
+                 (keydown)="bloquerTouches($event)">
+        </div>
+
+        <div class="switch-group">
+          <input class="switch-input" type="checkbox" id="hideEmail" formControlName="hideEmail">
+          <label class="switch-label" for="hideEmail">Cacher l'email</label>
+        </div>
+
+        @if (!contactForm.controls['hideEmail'].value) {
+          <div class="form-group">
+            <label class="form-label" for="email">Email *</label>
+            <input type="email" id="email" formControlName="email" class="form-input">
           </div>
+        }
 
-          <div class="mb-3">
-            <label class="form-label" for="nom">Nom *</label>
-            <input type="text" id="nom" formControlName="nom" class="form-control">
-          </div>
+        <div class="form-group form-group-last">
+          <label class="form-label" for="commentaire">Commentaire *</label>
+          <textarea id="commentaire" formControlName="commentaire" rows="4" class="form-textarea"></textarea>
+        </div>
 
-          <div class="mb-3">
-            <label class="form-label" for="age">Âge</label>
-            <input type="number" id="age" formControlName="age" class="form-control"
-                   min="0" max="120"
-                   (keydown)="bloquerTouches($event)">
-          </div>
-
-          <div class="form-check form-switch mb-3">
-            <input class="form-check-input" type="checkbox" id="hideEmail" formControlName="hideEmail">
-            <label class="form-check-label" for="hideEmail">Cacher l'email</label>
-          </div>
-
-          <!-- Le champ email n'apparaît que si la case "Hide" n'est pas cochée -->
-          @if (!contactForm.controls['hideEmail'].value) {
-            <div class="mb-3">
-              <label class="form-label" for="email">Email *</label>
-              <input type="email" id="email" formControlName="email" class="form-control">
-            </div>
-          }
-
-          <div class="mb-4">
-            <label class="form-label" for="commentaire">Commentaire *</label>
-            <textarea id="commentaire" formControlName="commentaire" rows="4" class="form-control"></textarea>
-          </div>
-
-          <!-- Cliquable seulement si le formulaire est valide -->
-          <button type="submit" class="btn btn-primary w-100" [disabled]="contactForm.invalid">
-            Envoyer
-          </button>
-        </form>
-      </div>
+        <button type="submit" class="submit-btn" [disabled]="contactForm.invalid">
+          Envoyer
+        </button>
+      </form>
     </div>
   </div>
 </div>
