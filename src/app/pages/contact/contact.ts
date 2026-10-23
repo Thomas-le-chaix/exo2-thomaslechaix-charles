@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ContactService } from '../../services/contact';
+import { ContactService } from '../../services/contactservice';
 
 const EMAIL_AVEC_AROBASE = /.*@.*/;
 
@@ -12,7 +12,7 @@ const EMAIL_AVEC_AROBASE = /.*@.*/;
   styleUrl: './contact.css'
 })
 export class Contact implements OnInit {
-  contactForm!: FormGroup;
+  private contactForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder,

@@ -12,7 +12,7 @@ interface Film {
   styleUrl: './liste.css'
 })
 export class Liste {
-  films: Film[] = [
+  public films: Film[] = [
     { titre: 'Inception', affiche: 'https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg' },
     { titre: 'Interstellar', affiche: 'https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg' },
     { titre: 'The Dark Knight', affiche: 'https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg' },
@@ -20,7 +20,7 @@ export class Liste {
     { titre: 'Fight Club', affiche: 'https://image.tmdb.org/t/p/w500/bptfVGEQuv6vDTIMVCHjJ9Dz8PX.jpg' }
   ];
 
-  filmSelectionne: Film | null = null;
+  public filmSelectionne: Film | null = null;
 
   selectionnerFilm(film: Film): void {
     this.filmSelectionne = film;

@@ -1,0 +1,28 @@
+:host {
+  display: block;
+}
+
+.empty-state {
+  text-align: center;
+}
+
+.error-code {
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #dc3545;
+  margin: 0;
+}
+
+.error-subtitle {
+  font-size: 1.75rem;
+  color: #6c757d;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.error-text {
+  font-size: 1rem;
+  color: #6c757d;
+  margin: 0;
+}
